@@ -2,9 +2,17 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
-      hossein
-    </div>
+    <div className="App d-flex justify-content-center align-items-center">
+      <div className="main d-flex flex-column align-items-center">
+        <h1 className="mt-4">ToDo App</h1>
+
+        <form className="form d-flex justify-content-between align-items-center">
+          <input type="text" placeholder="ADD YOUR TASK ..." className="input" />
+          <button className="btn">ADD</button>
+        </form>
+
+      </div>
+    </div >
   );
 }
 
