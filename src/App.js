@@ -72,21 +72,22 @@ function App() {
           <button className="btn" onClick={set}>{btnValue}</button>
         </div>
 
-
-        {
-          data.map((item, index) => (
-            <div key={index} className="cards d-flex justify-content-between align-items-center">
-              <div>
-                <p className="title">{item.text}</p>
+        <div className="div-card">
+          {
+            data.map((item, index) => (
+              <div key={index} className="cards d-flex justify-content-between align-items-center">
+                <div>
+                  <p className="title">{item.text}</p>
+                </div>
+                <div className="icons">
+                  <MdDelete style={{ fontSize: '1.8rem', cursor: 'pointer' }} onClick={() => (remove(index))} />
+                  <FaEdit style={{ fontSize: '1.8rem', cursor: 'pointer' }} onClick={() => (chandeEditMode(index))} />
+                </div>
               </div>
-              <div className="icons">
-                <MdDelete style={{ fontSize: '1.8rem', cursor: 'pointer' }} onClick={() => (remove(index))} />
-                <FaEdit style={{ fontSize: '1.8rem', cursor: 'pointer' }} onClick={() => (chandeEditMode(index))} />
-              </div>
-            </div>
-          ))
-        }
+            ))
+          }
 
+        </div>
 
 
       </div>
