@@ -1,4 +1,8 @@
 import './App.css';
+import { FaEdit } from "react-icons/fa";
+import { MdDelete } from "react-icons/md";
+
+
 
 function App() {
   return (
@@ -10,6 +14,19 @@ function App() {
           <input type="text" placeholder="ADD YOUR TASK ..." className="input" />
           <button className="btn">ADD</button>
         </form>
+
+
+        <div className="cards d-flex justify-content-between align-items-center">
+          <div>
+            <p className="title">salam</p>
+          </div>
+          <div className="icons">
+            <MdDelete style={{ fontSize: '1.8rem' }} />
+            <FaEdit style={{ fontSize: '1.8rem' }} />
+          </div>
+        </div>
+
+
 
       </div>
     </div >

@@ -49,3 +49,19 @@
     background-color: black;
     color: white;
 }
+
+.cards {
+    width: 80%;
+    font-size: 1.7rem;
+}
+
+.icons {
+    width: 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title {
+    font-size: 2.2rem;
+}
