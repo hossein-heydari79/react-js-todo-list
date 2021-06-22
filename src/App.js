@@ -12,20 +12,45 @@ function App() {
   const [data, setData] = useState([])
   const [btnValue, setBtnValue] = useState("ADD")
 
-  function set(index = -1) {
+  function set() {
+    let index = data.findIndex((item) => item.editMode === true);
 
-    setData([
-      ...data, {
-        text: value
-      }
-    ])
-    setValue("");
+    if (data.length == 0 || index == -1) {
+      setData([
+        ...data, {
+          text: value,
+          editMode: false
+        }
+      ])
+      setValue("");
+    }
+    else {
+
+      let newData = [...data];
+      newData[index].text = value;
+      newData[index].editMode = false;
+
+      setData(newData);
+
+      setBtnValue("ADD");
+      setValue("");
+
+    }
 
 
   }
 
 
 
+  function chandeEditMode(index) {
+    let newData = [...data];
+    newData[index].editMode = true;
+    setValue(newData[index].text);
+    setBtnValue("EDIT");
+
+    setData(newData);
+
+  }
 
 
   function remove(index) {
@@ -56,7 +81,7 @@ function App() {
               </div>
               <div className="icons">
                 <MdDelete style={{ fontSize: '1.8rem', cursor: 'pointer' }} onClick={() => (remove(index))} />
-                <FaEdit style={{ fontSize: '1.8rem', cursor: 'pointer' }} />
+                <FaEdit style={{ fontSize: '1.8rem', cursor: 'pointer' }} onClick={() => (chandeEditMode(index))} />
               </div>
             </div>
           ))
