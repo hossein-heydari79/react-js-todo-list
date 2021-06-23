@@ -1,5 +1,5 @@
 import './App.css';
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { ToastContainer, toast } from 'react-toastify';
@@ -12,6 +12,19 @@ function App() {
   const [value, setValue] = useState("");
   const [data, setData] = useState([])
   const [btnValue, setBtnValue] = useState("ADD")
+
+
+  useEffect(() => {
+    toast.success('Welcome To React Js!', {
+      position: "bottom-left",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
+  }, [])
 
   function set() {
     let index = data.findIndex((item) => item.editMode === true);
