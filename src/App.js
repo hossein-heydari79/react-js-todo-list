@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { FaEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
 import { ToastContainer, toast } from 'react-toastify';
@@ -13,6 +13,8 @@ function App() {
   const [data, setData] = useState([])
   const [btnValue, setBtnValue] = useState("ADD")
 
+  const input = useRef();
+
 
   useEffect(() => {
     toast.success('Welcome To React Js!', {
@@ -24,12 +26,16 @@ function App() {
       draggable: true,
       progress: undefined,
     });
+
+    input.current.focus();
+
   }, [])
 
   function set() {
+    input.current.focus();
     let index = data.findIndex((item) => item.editMode === true);
 
-    if (value == "" || value == " ") {
+    if (value === "" || value === " ") {
       toast.error('Fill in the field!', {
         position: "bottom-left",
         autoClose: 5000,
@@ -42,7 +48,7 @@ function App() {
 
     }
     else {
-      if (data.length == 0 || index == -1) {
+      if (data.length === 0 || index === -1) {
         setData([
           ...data, {
             text: value,
@@ -93,6 +99,7 @@ function App() {
 
 
   function chandeEditMode(index) {
+    input.current.focus();
     let newData = [...data];
     newData[index].editMode = true;
     setValue(newData[index].text);
@@ -104,6 +111,7 @@ function App() {
 
 
   function remove(index) {
+    input.current.focus();
     let newData = [...data];
 
     newData.splice(index, 1);
@@ -128,7 +136,7 @@ function App() {
         <h1 className="mt-4">ToDo App</h1>
 
         <div className="form d-flex justify-content-between align-items-center">
-          <input type="text" placeholder="ADD YOUR TASK ..." className="input" onInput={(e) => setValue(e.target.value)} value={value} />
+          <input type="text" placeholder="ADD YOUR TASK ..." className="input" ref={input} onInput={(e) => setValue(e.target.value)} value={value} />
           <button className="btn" onClick={set}>{btnValue}</button>
           <ToastContainer style={{ fontSize: '1.5rem' }} />
         </div>
